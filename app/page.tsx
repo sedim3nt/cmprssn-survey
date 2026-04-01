@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { QUESTIONS, scoreAnswers } from '@/lib/survey';
 import { submitSurvey } from '@/lib/supabase';
+import { saveSurveyToAirtable } from '@/lib/airtable';
 
 type Answers = Record<string, string | string[]>;
 
@@ -60,6 +61,7 @@ export default function SurveyPage() {
       try {
         const { autonomy, governance, quadrant, profile } = scoreAnswers(answers);
         await submitSurvey({ answers, profile, quadrant });
+        saveSurveyToAirtable(answers, profile, quadrant).catch(console.error);
         // Store results in sessionStorage for results page
         sessionStorage.setItem('cmprssn_results', JSON.stringify({ autonomy, governance, quadrant, profile, answers }));
         router.push('/results/survey');
