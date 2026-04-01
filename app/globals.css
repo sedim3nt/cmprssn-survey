@@ -1,0 +1,312 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --bg: #080C12;
+  --elevated: #0E1A2E;
+  --accent: #0088FF;
+  --accent-dim: #0066CC;
+  --frost: #E2EEF4;
+  --steel: #4A7EBF;
+  --steel-dim: #2A4E8F;
+  --muted: #3A5070;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--frost);
+  font-family: 'Rajdhani', sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Audiowide', sans-serif;
+}
+
+/* Scanline overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 136, 255, 0.015) 2px,
+    rgba(0, 136, 255, 0.015) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Grid background */
+.grid-bg {
+  background-image: 
+    linear-gradient(rgba(0, 136, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 136, 255, 0.06) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Glow effects */
+.glow-blue {
+  box-shadow: 0 0 20px rgba(0, 136, 255, 0.3), 0 0 60px rgba(0, 136, 255, 0.1);
+}
+
+.text-glow {
+  text-shadow: 0 0 20px rgba(0, 136, 255, 0.5);
+}
+
+/* Progress bar */
+.progress-bar {
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--steel));
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 10px var(--accent);
+}
+
+/* Option button */
+.option-btn {
+  background: rgba(14, 26, 46, 0.8);
+  border: 1px solid rgba(74, 126, 191, 0.3);
+  color: var(--frost);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  padding: 1rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.option-btn::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--accent);
+  transform: scaleY(0);
+  transition: transform 0.2s ease;
+}
+
+.option-btn:hover {
+  border-color: var(--steel);
+  background: rgba(14, 26, 46, 1);
+  color: white;
+}
+
+.option-btn:hover::before {
+  transform: scaleY(1);
+}
+
+.option-btn.selected {
+  border-color: var(--accent);
+  background: rgba(0, 136, 255, 0.1);
+  color: white;
+}
+
+.option-btn.selected::before {
+  transform: scaleY(1);
+}
+
+/* Checkbox option */
+.checkbox-btn {
+  background: rgba(14, 26, 46, 0.8);
+  border: 1px solid rgba(74, 126, 191, 0.3);
+  color: var(--frost);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  padding: 0.875rem 1.25rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+}
+
+.checkbox-btn:hover {
+  border-color: var(--steel);
+  background: rgba(14, 26, 46, 1);
+}
+
+.checkbox-btn.selected {
+  border-color: var(--accent);
+  background: rgba(0, 136, 255, 0.1);
+}
+
+.checkbox-indicator {
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid var(--steel);
+  border-radius: 3px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.checkbox-btn.selected .checkbox-indicator {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Primary button */
+.btn-primary {
+  background: var(--accent);
+  color: white;
+  font-family: 'Audiowide', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  padding: 0.875rem 2rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+}
+
+.btn-primary:hover {
+  background: #0099FF;
+  box-shadow: 0 0 20px rgba(0, 136, 255, 0.4);
+}
+
+.btn-primary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Ghost button */
+.btn-ghost {
+  background: transparent;
+  color: var(--steel);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid rgba(74, 126, 191, 0.3);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+}
+
+.btn-ghost:hover {
+  border-color: var(--steel);
+  color: var(--frost);
+}
+
+/* Textarea */
+.survey-textarea {
+  background: rgba(14, 26, 46, 0.8);
+  border: 1px solid rgba(74, 126, 191, 0.3);
+  color: var(--frost);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1rem;
+  padding: 1rem;
+  border-radius: 4px;
+  width: 100%;
+  resize: none;
+  min-height: 120px;
+  transition: border-color 0.2s;
+  outline: none;
+}
+
+.survey-textarea:focus {
+  border-color: var(--accent);
+}
+
+.survey-textarea::placeholder {
+  color: var(--muted);
+}
+
+/* Fade in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Quadrant matrix */
+.quadrant-cell {
+  border: 1px solid rgba(74, 126, 191, 0.2);
+  padding: 1rem;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.quadrant-cell.active {
+  border-color: var(--accent);
+  background: rgba(0, 136, 255, 0.08);
+  box-shadow: inset 0 0 20px rgba(0, 136, 255, 0.05);
+}
+
+/* Chart containers */
+.chart-container {
+  background: rgba(14, 26, 46, 0.6);
+  border: 1px solid rgba(74, 126, 191, 0.2);
+  border-radius: 6px;
+  padding: 1.5rem;
+}
+
+/* Tag pill */
+.tag-pill {
+  background: rgba(0, 136, 255, 0.12);
+  border: 1px solid rgba(0, 136, 255, 0.3);
+  color: var(--accent);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  padding: 0.25rem 0.75rem;
+  border-radius: 2px;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--steel-dim);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--steel);
+}
