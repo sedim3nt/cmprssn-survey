@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CMPRSSN Survey
 
-## Getting Started
+A research survey capturing the human experience of AI-driven work compression.
 
-First, run the development server:
+**Live:** (Component of the CMPRSSN research project)
+**Stack:** Next.js, TailwindCSS, Supabase, Recharts
+**Status:** Maintained
+
+## What This Is
+
+CMPRSSN Survey is the survey component of the CMPRSSN research project. It collects structured responses about how workers experience AI-driven compression — role consolidation, skill devaluation, workload intensification, and autonomy erosion. Responses are scored algorithmically and stored in both Supabase and Airtable for research analysis.
+
+The survey is designed to be completed in one sitting, with smooth question-by-question progression and clear progress indicators.
+
+## Features
+
+- 📋 **Structured Survey** — multi-question assessment with varied input types
+- 📊 **Score Calculation** — algorithmic scoring of compression exposure
+- 💾 **Dual Storage** — Supabase + Airtable for research flexibility
+- ✨ **Animated Flow** — question-by-question progression
+- 📱 **Responsive** — mobile-friendly design
+
+## AI Integration
+
+None — pure data collection and algorithmic scoring.
+
+## Tech Stack
+
+- **Framework:** Next.js 15 (App Router)
+- **Styling:** TailwindCSS
+- **Charts:** Recharts
+- **Database:** Supabase + Airtable
+- **AI:** None
+- **Hosting:** Vercel
+
+## Local Development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Environment Variables
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Variable | Description |
+|----------|-------------|
+| `NEXT_PUBLIC_SUPABASE_URL` | Supabase project URL |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase anonymous API key |
+| `RESULTS_PASSWORD` | Password for viewing aggregate results |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Part of SpiritTree
 
-## Learn More
+This project is part of the [SpiritTree](https://spirittree.dev) ecosystem — an autonomous AI operation building tools for the agent economy and displaced workers.
 
-To learn more about Next.js, take a look at the following resources:
+## License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT
