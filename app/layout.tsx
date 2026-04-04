@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import AIChatWidget from "@/components/AIChatWidget";
 
 export const metadata: Metadata = {
   title: "CMPRSSN — Agent Composition Survey",
@@ -28,6 +29,7 @@ export default function RootLayout({
       </head>
       <body className="grid-bg">
         {children}
+        <AIChatWidget />
       </body>
     </html>
   );
